@@ -14,7 +14,17 @@ require('mason-lspconfig').setup({
     ensure_installed = { 'pylsp', 'lua_ls', 'rust_analyzer', 'jdtls' },
 })
 
+
 local lspconfig = require('lspconfig')
+
+-- Configure diagnostics
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = false,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
 
 -- Global diagnostic keymaps
 local opts = { noremap = true, silent = true }
