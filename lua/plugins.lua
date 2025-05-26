@@ -80,4 +80,35 @@ require("lazy").setup({
             require("nvim-autopairs").setup {}
         end
     },
+    { "ellisonleao/gruvbox.nvim",  priority = 1000, config = true, opts = ... },
+    { "cpea2506/one_monokai.nvim", priority = 1000, config = true },
+    {
+      'mfussenegger/nvim-jdtls',
+      ft = { 'java' },
+      config = function()
+        local jdtls = require('jdtls')
+        local lsp = require('lsp')  -- pulls your on_attach function
+
+        local home = os.getenv("HOME")
+        local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+        local workspace_dir = home .. "/.local/share/eclipse/" .. project_name
+
+        local root_markers = { ".git", "pom.xml", "build.gradle", "mvnw", "gradlew" }
+        local root_dir = require('jdtls.setup').find_root(root_markers)
+        if not root_dir then
+          print("JDTLS: Could not find project root.")
+          return
+        end
+
+        local jdtls_path = vim.fn.stdpath("data") .. "/mason/packages/jdtls/bin/jdtls"
+
+        local config = {
+          cmd = { jdtls_path, "-data", workspace_dir },
+          root_dir = root_dir,
+          on_attach = lsp.on_attach,
+        }
+
+        jdtls.start_or_attach(config)
+      end,
+    }
 })

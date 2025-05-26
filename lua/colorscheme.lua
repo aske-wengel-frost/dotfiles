@@ -1,7 +1,9 @@
-local colorscheme = 'moonfly'
+-- local colorscheme = 'moonfly'
+--
+-- local is_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+-- if not is_ok then
+--     vim.notify('colorscheme ' .. colorscheme .. ' not found!')
+--     return
+-- end
+vim.cmd.colorscheme "one_monokai"
 
-local is_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not is_ok then
-    vim.notify('colorscheme ' .. colorscheme .. ' not found!')
-    return
-end
