@@ -48,7 +48,9 @@ require("lazy").setup({
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
-            require("nvim-tree").setup {}
+            require("nvim-tree").setup {
+                view = { adaptive_size = true}
+            }
         end,
     },
 
@@ -111,11 +113,4 @@ require("lazy").setup({
             jdtls.start_or_attach(config)
         end,
     },
-    {
-        "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp"
-    }
 })
