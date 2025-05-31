@@ -14,12 +14,12 @@ alias wtr="curl http://wttr.in/Odense"
 function smart_open_widget() {
   local target
 
-  target=$(fd . --type f --type d --hidden --exclude .git | \
+  target=$(fd . --type f --type d --hidden --exclude .git |
     fzf --height=100% --reverse --preview '
       if [ -d {} ]; then
-        tree -C {} | head -100
+        ls -l --color=always {} | head -50
       else
-        bat --style=numbers --color=always {} 2>/dev/null || cat {}
+        bat --style=numbers --color=always --line-range :100 {} 2>/dev/null || head -100 {}
       fi
     ' --preview-window=right:50%)
 
@@ -29,7 +29,7 @@ function smart_open_widget() {
     cd "$target"
     zle reset-prompt
   elif [[ "$target" == *.pdf ]]; then
-    open "$target"
+    zathura "$target"
   elif [[ "$target" =~ \.(py|js|ts|cpp|c|go|rb|sh|rs|java|html|css|md)$ ]]; then
     nvim "$target"
   else
