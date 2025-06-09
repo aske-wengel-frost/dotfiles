@@ -5,5 +5,5 @@
 --     vim.notify('colorscheme ' .. colorscheme .. ' not found!')
 --     return
 -- end
-vim.cmd.colorscheme "one_monokai"
+vim.cmd.colorscheme "kanagawa-wave"
 
