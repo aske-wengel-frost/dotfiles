@@ -41,23 +41,9 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
 
     {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
-        lazy = false,
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            require("nvim-tree").setup {
-                view = { adaptive_size = true}
-            }
-        end,
-    },
-
-    {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.8',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        dependencies = { 'nvim-lua/plenary.nvim' },
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -82,8 +68,6 @@ require("lazy").setup({
             require("nvim-autopairs").setup {}
         end
     },
-    { "ellisonleao/gruvbox.nvim",  priority = 1000, config = true, opts = ... },
-    { "cpea2506/one_monokai.nvim", priority = 1000, config = true },
     {
         'mfussenegger/nvim-jdtls',
         ft = { 'java' },
@@ -113,4 +97,20 @@ require("lazy").setup({
             jdtls.start_or_attach(config)
         end,
     },
+
+    --- Colorschemes
+    { "rebelot/kanagawa.nvim" },
+    { "ellisonleao/gruvbox.nvim",  priority = 1000, config = true, opts = ... },
+    { "cpea2506/one_monokai.nvim", priority = 1000, config = true },
+    {
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {},
+        -- Optional dependencies
+        dependencies = { { "echasnovski/mini.icons", opts = {} } },
+        -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+        lazy = false,
+    }
 })
