@@ -11,7 +11,7 @@ require('mason').setup({
 
 -- Automatically install and configure LSP servers
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pylsp', 'lua_ls', 'rust_analyzer', 'jdtls' },
+    ensure_installed = { 'pylsp', 'lua_ls', 'rust_analyzer', 'jdtls', 'jsonls' },
 })
 
 
@@ -19,11 +19,11 @@ local lspconfig = require('lspconfig')
 
 -- Configure diagnostics
 vim.diagnostic.config({
-  virtual_text = false,
-  signs = false,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
+    virtual_text = false,
+    signs = false,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
 })
 
 -- Global diagnostic keymaps
@@ -76,7 +76,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- List of non-Java LSP servers to configure automatically
-local servers = { 'pylsp', 'texlab', 'lua_ls', 'astro' }
+local servers = { 'pylsp', 'texlab', 'lua_ls', 'astro', 'fixjson' }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
@@ -88,4 +88,3 @@ end
 return {
     on_attach = on_attach
 }
-
