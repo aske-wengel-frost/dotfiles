@@ -44,7 +44,7 @@ local on_attach = function(client, bufnr)
     -- LSP navigation and features
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts('Go to declaration'))
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts('Go to definition'))
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts('Show hover documentation'))
+    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({border  = 'double', max_width=100}) end , bufopts('Show hover documentation'))
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts('Go to implementation'))
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts('Show signature help'))
 
