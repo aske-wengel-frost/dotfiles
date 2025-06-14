@@ -9,14 +9,15 @@ alias vim="nvim"
 alias v="nvim"
 alias lg="lazygit"
 alias o="open"
-alias wtr="curl http://wttr.in/Odense"
+alias wtr="curl http://wttr.in/Kerteminde"
 
 function smart_open_widget() {
   local target
   target=$(fd -H -t d . | fzf) || return 
 
   [[ -z "$target" ]] && return
-  cd "$target"
+  cd "$target" && ls 
+  
   zle reset-prompt
 }
 
@@ -26,4 +27,3 @@ bindkey "^f" smart_open_widget
 export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
 export PATH="$JAVA_HOME/bin:$PATH"
 export CPPFLAGS="-I$JAVA_HOME/include"
-
