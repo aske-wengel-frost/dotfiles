@@ -44,7 +44,8 @@ local on_attach = function(client, bufnr)
     -- LSP navigation and features
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts('Go to declaration'))
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts('Go to definition'))
-    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({border  = 'double', max_width=100}) end , bufopts('Show hover documentation'))
+    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = 'double', max_width = 100 }) end,
+        bufopts('Show hover documentation'))
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts('Go to implementation'))
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts('Show signature help'))
 
@@ -57,7 +58,42 @@ local on_attach = function(client, bufnr)
 
     -- LSP types, refactoring and actions
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts('Go to type definition'))
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts('Rename symbol'))
+
+    -- set nice remap:
+    local function buffer_local_rename()
+        local word = vim.fn.expand("<cword>")
+
+        -- Create a scratch buffer with minimal floating window
+        local buf = vim.api.nvim_create_buf(false, true)
+        local width = 30
+        local opts = {
+            relative = "cursor",
+            row = 1,
+            col = 0,
+            width = width,
+            height = 1,
+            style = "minimal",
+            border = "rounded",
+        }
+
+        local win = vim.api.nvim_open_win(buf, true, opts)
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, { word })
+        vim.api.nvim_buf_add_highlight(buf, -1, "Visual", 0, 0, -1)
+        vim.cmd("startinsert")
+
+        -- When <CR> is pressed in insert mode, perform local rename
+        vim.keymap.set("i", "<CR>", function()
+            local new_name = vim.trim(vim.fn.getline("."))
+            vim.api.nvim_win_close(win, true)
+
+            if new_name ~= "" and new_name ~= word then
+                -- Replace current word only in this buffer (case sensitive)
+                vim.cmd(string.format("%%s/\\<%s\\>/%s/g", word, new_name))
+            end
+        end, { buffer = buf, nowait = true })
+    end
+    vim.keymap.set("n", "<leader>rn", buffer_local_rename, { desc = "Rename in buffer only" })
+
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts('Code action'))
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts('Find references'))
 
@@ -76,7 +112,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- List of non-Java LSP servers to configure automatically
-local servers = { 'pylsp', 'texlab', 'lua_ls', 'astro', 'fixjson' }
+local servers = { 'pylsp', 'texlab', 'lua_ls', 'astro', 'rust_analyzer' }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
