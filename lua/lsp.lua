@@ -11,7 +11,7 @@ require('mason').setup({
 
 -- Automatically install and configure LSP servers
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pylsp', 'lua_ls', 'rust_analyzer', 'jdtls', 'jsonls' },
+    ensure_installed = { 'basedpyright', 'lua_ls', 'rust_analyzer', 'jdtls', 'jsonls' },
 })
 
 
@@ -112,7 +112,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- List of non-Java LSP servers to configure automatically
-local servers = { 'pylsp', 'texlab', 'lua_ls', 'astro', 'rust_analyzer' }
+local servers = { 'basedpyright', 'texlab', 'lua_ls', 'astro', 'rust_analyzer' }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
