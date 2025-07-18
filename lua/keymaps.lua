@@ -9,6 +9,14 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true })
 
+--ToggleTerm
+vim.keymap.set('n', '<C-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle Terminal' })
+vim.keymap.set('t', '<C-t>', [[<C-\><C-n><cmd>ToggleTerm<CR>]], { desc = 'Toggle Terminal from Terminal' })
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {desc = 'Init visual-mode inside Toggle Terminal'})
+vim.keymap.set('t', '<C-+>', [[<C-\><C-n>:resize +2<CR>i]], { desc = 'Increase terminal height' })
+vim.keymap.set('t', '<C-->', [[<C-\><C-n>:resize -2<CR>i]], { desc = 'Decrease terminal height' })
+vim.keymap.set('t', '<C-0>', [[<C-\><C-n>:resize 12<CR>i]], { desc = 'Set terminal to default height' })
+
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
 

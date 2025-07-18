@@ -103,6 +103,12 @@ require("lazy").setup({
     { "ellisonleao/gruvbox.nvim",  priority = 1000, config = true, opts = ... },
     { "cpea2506/one_monokai.nvim", priority = 1000, config = true },
     {
+        "rose-pine/neovim",
+        name = "rose-pine",
+    },
+
+    -- filetree ish
+    {
         'stevearc/oil.nvim',
         ---@module 'oil'
         ---@type oil.SetupOpts
@@ -113,4 +119,7 @@ require("lazy").setup({
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
     },
+    { "nvimdev/lspsaga.nvim", branch = "main" },
+    {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}},
+
 })
