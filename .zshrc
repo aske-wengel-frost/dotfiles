@@ -10,6 +10,8 @@ alias v="nvim"
 alias lg="lazygit"
 alias o="open"
 alias wtr="curl http://wttr.in/Kerteminde"
+alias cal="icalbuddy eventsToday"
+alias book="rustup doc --book"
 
 function smart_open_widget() {
   local target
