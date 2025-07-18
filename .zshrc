@@ -29,3 +29,7 @@ bindkey "^f" smart_open_widget
 export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
 export PATH="$JAVA_HOME/bin:$PATH"
 export CPPFLAGS="-I$JAVA_HOME/include"
+
+
+# manpage highlighting
+eval "$(batman --export-env)"
