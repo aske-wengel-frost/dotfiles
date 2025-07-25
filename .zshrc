@@ -15,10 +15,10 @@ alias book="rustup doc --book"
 
 function smart_open_widget() {
   local target
-  target=$(fd -H -t d . | fzf) || return 
+  target=$(fd -t d . --exclude .git --exclude node_modules --exclude venv| fzf) || return 
 
   [[ -z "$target" ]] && return
-  cd "$target" && ls 
+  cd "$target" 
   
   zle reset-prompt
 }
