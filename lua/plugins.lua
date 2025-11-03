@@ -99,14 +99,14 @@ require("lazy").setup({
     },
 
     --- Colorschemes
-    { "rebelot/kanagawa.nvim" },
-    { "ellisonleao/gruvbox.nvim",  priority = 1000, config = true, opts = ... },
-    { "cpea2506/one_monokai.nvim", priority = 1000, config = true },
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-    },
-
+    -- { "rebelot/kanagawa.nvim" },
+    -- { "ellisonleao/gruvbox.nvim",  priority = 1000, config = true, opts = ... },
+    -- { "cpea2506/one_monokai.nvim", priority = 1000, config = true },
+    -- {
+    --     "rose-pine/neovim",
+    --     name = "rose-pine",
+    -- },
+    --
     -- filetree ish
     {
         'stevearc/oil.nvim',
@@ -138,12 +138,11 @@ require("lazy").setup({
             -- Required.
             "nvim-lua/plenary.nvim",
 
-            -- see below for full list of optional dependencies 👇
         },
         opts = {
             workspaces = {
                 {
-                    name = "personal",
+                    name = "sdu-secondbrain",
                     path = "~/Documents/sdu/sdu-secondbrain",
                 },
             },
@@ -151,6 +150,54 @@ require("lazy").setup({
                 enable = false,
             }
         },
+
+    },
+    {
+        "epwalsh/obsidian.nvim",
+        version = "*", -- recommended, use latest release instead of latest commit
+        lazy = true,
+        ft = "markdown",
+        -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+        -- event = {
+        --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+        --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+        --   -- refer to `:h file-pattern` for more examples
+        --   "BufReadPre path/to/my-vault/*.md",
+        --   "BufNewFile path/to/my-vault/*.md",
+        -- },
+        dependencies = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+
+        },
+        opts = {
+            workspaces = {
+                {
+                    name = "sdu-secondbrain",
+                    path = "~/Documents/sdu/sdu-secondbrain",
+                },
+            },
+            ui = {
+                enable = false,
+            }
+        },
+        {
+            "Kicamon/markdown-table-mode.nvim",
+            ft = { "markdown" },
+            config = function()
+                require("markdown-table-mode").setup({
+                    filetype = { "*.md" },
+                    options = {
+                        insert = true,
+                        insert_leave = true,
+                        pad_separator_line = false, -- whether to pad the separator line (---) with spaces
+                        alig_style = "default",
+                    },
+                })
+            end,
+        }
+
     }
 
 })
+

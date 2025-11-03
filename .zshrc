@@ -11,7 +11,9 @@ alias lg="lazygit"
 alias o="open"
 alias wtr="curl http://wttr.in/Kerteminde"
 alias cal="icalbuddy eventsToday"
-alias book="rustup doc --book"
+alias rustBook="rustup doc --book"
+alias eTerm="nvim ~/Library/Application\ Support/com.mitchellh.ghostty/config" 
+alias getAlias="grep -w 'alias' ~/.zshrc"
 
 function smart_open_widget() {
   local target
@@ -33,3 +35,13 @@ export CPPFLAGS="-I$JAVA_HOME/include"
 
 # manpage highlighting
 eval "$(batman --export-env)"
+export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
+
+
+#python3 paths
+export LDFLAGS="-L/opt/homebrew/opt/tcl-tk/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/tcl-tk/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/tcl-tk/lib/pkgconfig"
+
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"

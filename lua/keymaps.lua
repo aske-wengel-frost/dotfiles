@@ -42,3 +42,6 @@ vim.keymap.set('n', '<leader>sk', '<cmd>Telescope keymaps<CR>', { desc = 'Search
 vim.keymap.set('n', 'å', "o<C-r>+<Esc>", { desc = 'Paste on line below from clipboard' })
 vim.keymap.set('x', '<leader>cc', '"+y', { desc = "Copy selected to clipboard (y+)" })
 vim.keymap.set('n', '<Esc>', "<cmd>noh<CR>", { desc = 'Unhighlight search.' })
+
+-- Obsidian
+vim.keymap.set('n', '<leader>oo', '<cmd>ObsidianOpen<cr>', {desc = 'Open cur file with Obsidian'})
