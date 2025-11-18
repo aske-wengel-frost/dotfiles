@@ -102,10 +102,13 @@ require("lazy").setup({
     -- { "rebelot/kanagawa.nvim" },
     -- { "ellisonleao/gruvbox.nvim",  priority = 1000, config = true, opts = ... },
     -- { "cpea2506/one_monokai.nvim", priority = 1000, config = true },
-    -- {
-    --     "rose-pine/neovim",
-    --     name = "rose-pine",
-    -- },
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        opts = {
+            disable_italics = true,
+        }
+    },
     --
     -- filetree ish
     {
