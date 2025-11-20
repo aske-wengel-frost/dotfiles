@@ -14,73 +14,82 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     "bluz71/vim-moonfly-colors",
     {
-        'saghen/blink.cmp',
-        dependencies = { 'rafamadriz/friendly-snippets' },
-        version = '1.*',
+        "saghen/blink.cmp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        version = "1.*",
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
         opts = {
             keymap = {
-                preset = 'enter',
+                preset = "enter",
                 ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
                 ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
             },
             appearance = {
-                nerd_font_variant = 'mono'
+                nerd_font_variant = "mono",
             },
             completion = { documentation = { auto_show = false } },
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
+                default = { "lsp", "path", "snippets", "buffer" },
             },
-            fuzzy = { implementation = "prefer_rust_with_warning" }
+            fuzzy = { implementation = "prefer_rust_with_warning" },
         },
-        opts_extend = { "sources.default" }
+        opts_extend = { "sources.default" },
     },
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
 
     {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.8',
-        dependencies = { 'nvim-lua/plenary.nvim' },
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.8",
+        dependencies = { "nvim-lua/plenary.nvim" },
     },
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
-            require("nvim-treesitter.configs").setup {
-                ensure_installed = { "lua", "python", "javascript", "html", "css", "bash", "markdown", "markdown_inline" },
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "lua",
+                    "python",
+                    "javascript",
+                    "html",
+                    "css",
+                    "bash",
+                    "markdown",
+                    "markdown_inline",
+                },
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
                 },
                 indent = {
-                    enable = true
-                }
-            }
-        end
+                    enable = true,
+                },
+            })
+        end,
     },
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = function()
-            require("nvim-autopairs").setup {}
-        end
+            require("nvim-autopairs").setup({})
+        end,
     },
     {
-        'mfussenegger/nvim-jdtls',
-        ft = { 'java' },
+        "mfussenegger/nvim-jdtls",
+        ft = { "java" },
         config = function()
-            local jdtls = require('jdtls')
-            local lsp = require('lsp') -- pulls your on_attach function
+            local jdtls = require("jdtls")
+            local lsp = require("lsp") -- pulls your on_attach function
 
             local home = os.getenv("HOME")
-            local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+            local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
             local workspace_dir = home .. "/.local/share/eclipse/" .. project_name
 
             local root_markers = { ".git", "pom.xml", "build.gradle", "mvnw", "gradlew" }
-            local root_dir = require('jdtls.setup').find_root(root_markers)
+            local root_dir = require("jdtls.setup").find_root(root_markers)
             if not root_dir then
                 print("JDTLS: Could not find project root.")
                 return
@@ -100,19 +109,19 @@ require("lazy").setup({
 
     --- Colorschemes
     -- { "rebelot/kanagawa.nvim" },
-    -- { "ellisonleao/gruvbox.nvim",  priority = 1000, config = true, opts = ... },
+    { "ellisonleao/gruvbox.nvim", priority = 1000 },
     -- { "cpea2506/one_monokai.nvim", priority = 1000, config = true },
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        opts = {
-            disable_italics = true,
-        }
-    },
+    -- {
+    --     "rose-pine/neovim",
+    --     name = "rose-pine",
+    --     opts = {
+    --         disable_italics = true,
+    --     }
+    -- },
     --
     -- filetree ish
     {
-        'stevearc/oil.nvim',
+        "stevearc/oil.nvim",
         ---@module 'oil'
         ---@type oil.SetupOpts
         opts = {},
@@ -122,38 +131,12 @@ require("lazy").setup({
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
     },
-    { "nvimdev/lspsaga.nvim",    branch = "main" },
-    { 'akinsho/toggleterm.nvim', version = "*",  opts = { --[[ things you want to change go here]] } },
+    { "nvimdev/lspsaga.nvim",     branch = "main" },
     {
-        "epwalsh/obsidian.nvim",
-        version = "*", -- recommended, use latest release instead of latest commit
-        lazy = true,
-        ft = "markdown",
-        -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-        -- event = {
-        --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-        --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-        --   -- refer to `:h file-pattern` for more examples
-        --   "BufReadPre path/to/my-vault/*.md",
-        --   "BufNewFile path/to/my-vault/*.md",
-        -- },
-        dependencies = {
-            -- Required.
-            "nvim-lua/plenary.nvim",
-
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        opts = { --[[ things you want to change go here]]
         },
-        opts = {
-            workspaces = {
-                {
-                    name = "sdu-secondbrain",
-                    path = "~/Documents/sdu/sdu-secondbrain",
-                },
-            },
-            ui = {
-                enable = false,
-            }
-        },
-
     },
     {
         "epwalsh/obsidian.nvim",
@@ -171,7 +154,6 @@ require("lazy").setup({
         dependencies = {
             -- Required.
             "nvim-lua/plenary.nvim",
-
         },
         opts = {
             workspaces = {
@@ -182,7 +164,36 @@ require("lazy").setup({
             },
             ui = {
                 enable = false,
-            }
+            },
+        },
+    },
+    {
+        "epwalsh/obsidian.nvim",
+        version = "*", -- recommended, use latest release instead of latest commit
+        lazy = true,
+        ft = "markdown",
+        -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+        -- event = {
+        --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+        --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+        --   -- refer to `:h file-pattern` for more examples
+        --   "BufReadPre path/to/my-vault/*.md",
+        --   "BufNewFile path/to/my-vault/*.md",
+        -- },
+        dependencies = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+        },
+        opts = {
+            workspaces = {
+                {
+                    name = "sdu-secondbrain",
+                    path = "~/Documents/sdu/sdu-secondbrain",
+                },
+            },
+            ui = {
+                enable = false,
+            },
         },
         {
             "Kicamon/markdown-table-mode.nvim",
@@ -198,9 +209,6 @@ require("lazy").setup({
                     },
                 })
             end,
-        }
-
-    }
-
+        },
+    },
 })
-
