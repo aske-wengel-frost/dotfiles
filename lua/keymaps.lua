@@ -44,4 +44,8 @@ vim.keymap.set('x', '<leader>cc', '"+y', { desc = "Copy selected to clipboard (y
 vim.keymap.set('n', '<Esc>', "<cmd>noh<CR>", { desc = 'Unhighlight search.' })
 
 -- Obsidian
-vim.keymap.set('n', '<leader>oo', '<cmd>ObsidianOpen<cr>', {desc = 'Open cur file with Obsidian'})
+vim.keymap.set('n', '<leader>oo', '<cmd>ObsidianOpen<cr>', { desc = 'Open cur file with Obsidian' })
+
+
+-- spelling
+-- vim.cmd [[ set spellfile =~/.config/nvim/spell/da.utf-8.spl]]

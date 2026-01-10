@@ -119,7 +119,11 @@ local on_attach = function(client, bufnr)
 end
 
 -- List of non-Java LSP servers to configure automatically
+<<<<<<< HEAD
 local servers = { "texlab", "lua_ls", "astro", "rust_analyzer", "csharp_ls", "tinymist", "jsonls", "basedpyright" }
+=======
+local servers = { "basedpyright", "texlab", "lua_ls", "astro", "rust_analyzer", "csharp_ls", "tinymist" }
+>>>>>>> 47ad5c70467012b214a80ceb16f7d8d38f475ef9
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup({
