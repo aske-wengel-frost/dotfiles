@@ -5,7 +5,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # aliases 
-alias vim="nvim"
+# alias vim="nvim"
 alias v="nvim"
 alias lg="lazygit"
 alias o="open"
@@ -88,4 +88,5 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/tcl-tk/lib/pkgconfig"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 export PATH="$PATH:$(brew --prefix john-jumbo)/share/john"
+export PATH="$HOME/.local/bin:$PATH"
 

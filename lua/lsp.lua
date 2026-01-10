@@ -9,9 +9,10 @@ require("mason").setup({
     },
 })
 
+
 -- Automatically install and configure LSP servers
 require("mason-lspconfig").setup({
-    ensure_installed = { "basedpyright", "lua_ls", "rust_analyzer", "jdtls", "jsonls", "csharp_ls", "tinymist" },
+    ensure_installed = { "lua_ls", "rust_analyzer", "jdtls", "jsonls", "csharp_ls", "tinymist", "basedpyright" },
 })
 
 local lspconfig = require("lspconfig")
@@ -20,7 +21,7 @@ local lspconfig = require("lspconfig")
 vim.diagnostic.config({
     virtual_text = false,
     signs = false,
-    underline = true,
+    underline = false,
     update_in_insert = false,
     severity_sort = true,
 })
@@ -118,13 +119,31 @@ local on_attach = function(client, bufnr)
 end
 
 -- List of non-Java LSP servers to configure automatically
-local servers = { "basedpyright", "texlab", "lua_ls", "astro", "rust_analyzer", "csharp_ls", "tinymist", "jsonls" }
+local servers = { "texlab", "lua_ls", "astro", "rust_analyzer", "csharp_ls", "tinymist", "jsonls", "basedpyright" }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup({
         on_attach = on_attach,
     })
 end
+
+lspconfig.basedpyright.setup({
+    on_attach = function(client, bufnr)
+        vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+        on_attach(client, bufnr)
+    end,
+    settings = {
+        basedpyright = {
+            analysis = {
+                typeCheckingMode = "basic",
+                diagnosticSeverityOverrides = {
+                    reportUnusedImport = "none",
+                    reportUnusedVariable = "none",
+                },
+            },
+        },
+    },
+})
 
 -- Export for use in plugins like nvim-jdtls
 return {
