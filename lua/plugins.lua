@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "bluz71/vim-moonfly-colors",
+    { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
     {
         "saghen/blink.cmp",
         dependencies = { "rafamadriz/friendly-snippets" },
@@ -109,7 +109,7 @@ require("lazy").setup({
 
     --- Colorschemes
     -- { "rebelot/kanagawa.nvim" },
-    { "ellisonleao/gruvbox.nvim", priority = 1000 },
+    { "ellisonleao/gruvbox.nvim",  priority = 1000 },
     -- { "cpea2506/one_monokai.nvim", priority = 1000, config = true },
     -- {
     --     "rose-pine/neovim",
@@ -131,7 +131,7 @@ require("lazy").setup({
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
     },
-    { "nvimdev/lspsaga.nvim",     branch = "main" },
+    { "nvimdev/lspsaga.nvim", branch = "main" },
     {
         "akinsho/toggleterm.nvim",
         version = "*",
