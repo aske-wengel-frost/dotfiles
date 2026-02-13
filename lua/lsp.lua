@@ -17,6 +17,7 @@ require("mason-lspconfig").setup({
         "csharp_ls",
         "tinymist",
         "basedpyright",
+        "ts_ls"
     },
 })
 
@@ -103,9 +104,9 @@ local default = {
 vim.lsp.config("lua_ls", default)
 vim.lsp.config("rust_analyzer", default)
 vim.lsp.config("texlab", default)
-vim.lsp.config("astro", default)
 vim.lsp.config("csharp_ls", default)
 vim.lsp.config("tinymist", default)
+vim.lsp.config("ts_ls", default)
 
 vim.lsp.config("basedpyright", {
     on_attach = function(client, bufnr)
