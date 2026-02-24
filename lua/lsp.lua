@@ -107,27 +107,29 @@ vim.lsp.config("texlab", default)
 vim.lsp.config("csharp_ls", default)
 vim.lsp.config("tinymist", default)
 vim.lsp.config("ts_ls", default)
+vim.lsp.config("jsonls", default)
+vim.lsp.config("basedpyright", default)
 
-vim.lsp.config("basedpyright", {
-    on_attach = function(client, bufnr)
-        vim.lsp.inlay_hint.set(bufnr, false)
-        on_attach(client, bufnr)
-    end,
-    capabilities = capabilities,
-    settings = {
-        basedpyright = {
-            analysis = {
-                typeCheckingMode = "basic",
-                diagnosticSeverityOverrides = {
-                    reportUnusedImport = "none",
-                    reportUnusedVariable = "none",
-                },
-            },
-        },
-    },
-})
-
-return {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
+-- vim.lsp.config("basedpyright", {
+--     on_attach = function(client, bufnr)
+--         vim.lsp.inlay_hint.set(bufnr, false)
+--         on_attach(client, bufnr)
+--     end,
+--     capabilities = capabilities,
+--     settings = {
+--         basedpyright = {
+--             analysis = {
+--                 typeCheckingMode = "basic",
+--                 diagnosticSeverityOverrides = {
+--                     reportUnusedImport = "none",
+--                     reportUnusedVariable = "none",
+--                 },
+--             },
+--         },
+--     },
+-- })
+--
+-- return {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+-- }
