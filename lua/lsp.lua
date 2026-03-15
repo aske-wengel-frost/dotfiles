@@ -6,6 +6,10 @@ require("mason").setup({
             package_uninstalled = "✗",
         },
     },
+    registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+    }
 })
 
 require("mason-lspconfig").setup({
@@ -14,10 +18,9 @@ require("mason-lspconfig").setup({
         "rust_analyzer",
         "jdtls",
         "jsonls",
-        "csharp_ls",
         "tinymist",
         "basedpyright",
-        "ts_ls"
+        "ts_ls",
     },
 })
 
@@ -104,7 +107,6 @@ local default = {
 vim.lsp.config("lua_ls", default)
 vim.lsp.config("rust_analyzer", default)
 vim.lsp.config("texlab", default)
-vim.lsp.config("csharp_ls", default)
 vim.lsp.config("tinymist", default)
 vim.lsp.config("ts_ls", default)
 vim.lsp.config("jsonls", default)
@@ -129,7 +131,7 @@ vim.lsp.config("basedpyright", default)
 --     },
 -- })
 --
--- return {
---     on_attach = on_attach,
---     capabilities = capabilities,
--- }
+return {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
