@@ -21,6 +21,7 @@ require("mason-lspconfig").setup({
         "tinymist",
         "basedpyright",
         "ts_ls",
+        "clangd"
     },
 })
 
@@ -111,6 +112,7 @@ vim.lsp.config("tinymist", default)
 vim.lsp.config("ts_ls", default)
 vim.lsp.config("jsonls", default)
 vim.lsp.config("basedpyright", default)
+vim.lsp.config("clangd", default)
 
 -- vim.lsp.config("basedpyright", {
 --     on_attach = function(client, bufnr)
