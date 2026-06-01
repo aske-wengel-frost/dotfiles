@@ -7,7 +7,7 @@ vim.o.tabstop = 8
 vim.o.signcolumn = "yes"
 vim.o.winborder = "rounded"
 
-local servers = { "clangd", "lua_ls", "tinymist", "pyright", "ruby_lsp", "ts_ls", "jsonls" }
+local servers = { "clangd", "lua_ls", "tinymist", "basedpyright", "ruby_lsp", "ts_ls", "jsonls" }
 vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
@@ -69,6 +69,7 @@ end
 vim.cmd.colorscheme("koda-dark")
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 vim.keymap.set("n", "<C-n>", ":Oil<CR>")
+vim.keymap.set("n", "<leader>gi", vim.lsp.buf.definition)
 vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
