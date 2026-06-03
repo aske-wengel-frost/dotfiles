@@ -40,6 +40,10 @@
       "rev": "9e9378d6ee34bb3782e0e8c63d9ec8ca618b479b",
       "src": "https://github.com/sphamba/smear-cursor.nvim"
     },
+    "solarized.nvim": {
+      "rev": "a8085e29883ddcfb39bd46197eb32ef00df05368",
+      "src": "https://github.com/maxmx03/solarized.nvim"
+    },
     "startup.nvim": {
       "rev": "cd5fe95f61fdf6ef7db3732be79126032ab1dd3e",
       "src": "https://github.com/startup-nvim/startup.nvim"

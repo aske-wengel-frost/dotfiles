@@ -20,12 +20,8 @@ vim.pack.add({
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/folke/trouble.nvim" },
-	{ src = "https://github.com/rose-pine/neovim" }
+	{ src = "https://github.com/maxmx03/solarized.nvim" },
 })
-
-
-
-
 
 require("trouble").setup()
 require("mason").setup({
@@ -66,7 +62,7 @@ for _, server in ipairs(servers) do
 	vim.lsp.enable(server)
 end
 
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("solarized")
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 vim.keymap.set("n", "<C-n>", ":Oil<CR>")
 vim.keymap.set("n", "<leader>gi", vim.lsp.buf.definition)
