@@ -9,12 +9,7 @@ source $ZSH/oh-my-zsh.sh
 alias v="nvim"
 alias lg="lazygit"
 alias o="open"
-alias wtr="curl http://wttr.in/Kerteminde"
-alias cal="icalbuddy eventsToday"
-alias rustBook="rustup doc --book"
-alias eTerm="nvim ~/Library/Application\ Support/com.mitchellh.ghostty/config" 
 alias getAlias="grep -w 'alias' ~/.zshrc"
-alias brave="open -a 'Brave Browser.app'"
 
 function goRemoteUrl() {
     local url
