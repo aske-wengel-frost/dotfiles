@@ -64,7 +64,6 @@ require("blink.cmp").setup({
 require("telescope").setup()
 require("mini.pairs").setup()
 require("mini.surround").setup()
-require("mini.statusline").setup()
 
 for _, server in ipairs(servers) do
 	vim.lsp.enable(server)
