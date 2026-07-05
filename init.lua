@@ -21,7 +21,7 @@ vim.pack.add({
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/folke/trouble.nvim" },
-	{ src = "https://github.com/ellisonleao/gruvbox.nvim" }
+	{ src = "https://github.com/ellisonleao/gruvbox.nvim" },
 })
 
 require("trouble").setup()
@@ -86,8 +86,16 @@ require("gruvbox").setup({
 	dim_inactive = false,
 	transparent_mode = false,
 })
+
+
+vim.opt.runtimepath:append("~/Developer/personal/plugins/negotium")
+require("negotium").setup({ keymap = "<leader>jj" })
+
+-- Theme 
 vim.cmd.colorscheme("gruvbox")
 
+
+-- Pluginbindings
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 vim.keymap.set("n", "<C-n>", ":Oil<CR>")
 vim.keymap.set("n", "<leader>gi", vim.lsp.buf.definition)
@@ -95,8 +103,16 @@ vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags)
+vim.keymap.set("n", "<leader>fk", require("telescope.builtin").keymaps)
 vim.keymap.set("v", "<leader>cc", '"+y')
 
+-- Magic
 vim.keymap.set({ "v", "n" }, "<leader>/", ":norm gcc<CR>")
 vim.keymap.set("n", "<leader>q", ":Trouble diagnostics toggle<CR>")
 vim.keymap.set("n", "<ESC>", ":noh<CR>")
+
+vim.keymap.set("v", "<Tab>", ":><CR>gv=gv")
+vim.keymap.set("v", "<S-Tab>", ":<<CR>gv=gv")
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
