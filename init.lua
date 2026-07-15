@@ -21,7 +21,8 @@ vim.pack.add({
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/folke/trouble.nvim" },
-	{ src = "https://github.com/oskarnurm/koda.nvim"}
+	{ src = "https://github.com/rose-pine/neovim" }
+
 })
 
 require("trouble").setup()
@@ -62,10 +63,13 @@ for _, server in ipairs(servers) do
 	vim.lsp.enable(server)
 end
 
-vim.cmd.colorscheme("koda")
+require("rose-pine").setup({
+	styles = { italic = false }
+})
+vim.cmd.colorscheme("rose-pine")
 
--- vim.opt.runtimepath:append("~/Developer/personal/plugins/negotium")
--- require("negotium").setup({ keymap = "<leader>jj" })
+vim.opt.runtimepath:append("~/Developer/personal/plugins/tinytask.nvim")
+require("tinytask").setup({ keymap = "<leader>tt" })
 
 -- Pluginbindings
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
