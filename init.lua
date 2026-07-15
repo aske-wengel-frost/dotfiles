@@ -21,7 +21,8 @@ vim.pack.add({
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/folke/trouble.nvim" },
-	{ src = "https://github.com/ellisonleao/gruvbox.nvim" }
+	{ src = "https://github.com/ellisonleao/gruvbox.nvim" },
+	{ src = "https://github.com/oskarnurm/koda.nvim"}
 })
 
 require("trouble").setup()
@@ -86,7 +87,7 @@ require("gruvbox").setup({
 	dim_inactive = false,
 	transparent_mode = false,
 })
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("koda")
 
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 vim.keymap.set("n", "<C-n>", ":Oil<CR>")
@@ -96,6 +97,7 @@ vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags)
 vim.keymap.set("v", "<leader>cc", '"+y')
+-- vim.keymap.set("v", "<leader>rr", vim.lsp.buf.rename)
 
 vim.keymap.set({ "v", "n" }, "<leader>/", ":norm gcc<CR>")
 vim.keymap.set("n", "<leader>q", ":Trouble diagnostics toggle<CR>")
