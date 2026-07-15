@@ -21,7 +21,6 @@ vim.pack.add({
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/folke/trouble.nvim" },
-	{ src = "https://github.com/ellisonleao/gruvbox.nvim" },
 	{ src = "https://github.com/oskarnurm/koda.nvim"}
 })
 
@@ -63,32 +62,12 @@ for _, server in ipairs(servers) do
 	vim.lsp.enable(server)
 end
 
--- Default options:
-require("gruvbox").setup({
-	terminal_colors = true, -- add neovim terminal colors
-	undercurl = true,
-	underline = true,
-	bold = true,
-	italic = {
-		strings = false,
-		emphasis = false,
-		comments = true,
-		operators = false,
-		folds = true,
-	},
-	strikethrough = true,
-	invert_selection = false,
-	invert_signs = false,
-	invert_tabline = false,
-	inverse = true, -- invert background for search, diffs, statuslines and errors
-	contrast = "", -- can be "hard", "soft" or empty string
-	palette_overrides = {},
-	overrides = {},
-	dim_inactive = false,
-	transparent_mode = false,
-})
 vim.cmd.colorscheme("koda")
 
+-- vim.opt.runtimepath:append("~/Developer/personal/plugins/negotium")
+-- require("negotium").setup({ keymap = "<leader>jj" })
+
+-- Pluginbindings
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 vim.keymap.set("n", "<C-n>", ":Oil<CR>")
 vim.keymap.set("n", "<leader>gi", vim.lsp.buf.definition)
@@ -96,9 +75,17 @@ vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
 vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags)
+vim.keymap.set("n", "<leader>fk", require("telescope.builtin").keymaps)
 vim.keymap.set("v", "<leader>cc", '"+y')
 -- vim.keymap.set("v", "<leader>rr", vim.lsp.buf.rename)
 
+-- Magic
 vim.keymap.set({ "v", "n" }, "<leader>/", ":norm gcc<CR>")
 vim.keymap.set("n", "<leader>q", ":Trouble diagnostics toggle<CR>")
 vim.keymap.set("n", "<ESC>", ":noh<CR>")
+
+vim.keymap.set("v", "<Tab>", ":><CR>gv=gv")
+vim.keymap.set("v", "<S-Tab>", ":<<CR>gv=gv")
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
