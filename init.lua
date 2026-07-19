@@ -8,7 +8,16 @@ vim.o.signcolumn = "yes"
 vim.o.winborder = "rounded"
 vim.o.colorcolumn = '80'
 
-local servers = { "clangd", "lua_ls", "tinymist", "basedpyright", "ruby_lsp", "ts_ls", "jsonls" }
+local servers = {
+	"clangd",
+	"lua_ls",
+	"tinymist",
+	"basedpyright",
+	"ruby_lsp",
+	"ts_ls",
+	"jsonls",
+}
+
 vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
@@ -21,10 +30,14 @@ vim.pack.add({
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/folke/trouble.nvim" },
+	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/rose-pine/neovim" }
 
 })
 
+require("conform").setup({
+	formatters_by_ft = { python = { "black" } }
+})
 require("trouble").setup()
 require("mason").setup({
 	firewall = {
@@ -59,6 +72,7 @@ require("telescope").setup()
 require("mini.pairs").setup()
 require("mini.surround").setup()
 
+
 for _, server in ipairs(servers) do
 	vim.lsp.enable(server)
 end
@@ -72,7 +86,11 @@ vim.cmd.colorscheme("rose-pine")
 -- require("tinytask").setup({ keymap = "<leader>tt" })
 
 -- Pluginbindings
-vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>fm", function()
+	require("conform").format({ lsp_fallback = true })
+end
+)
+
 vim.keymap.set("n", "<C-n>", ":Oil<CR>")
 vim.keymap.set("n", "<leader>gi", vim.lsp.buf.definition)
 vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files)
