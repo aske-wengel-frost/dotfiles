@@ -68,8 +68,8 @@ require("rose-pine").setup({
 })
 vim.cmd.colorscheme("rose-pine")
 
-vim.opt.runtimepath:append("~/Developer/personal/plugins/tinytask.nvim")
-require("tinytask").setup({ keymap = "<leader>tt" })
+-- vim.opt.runtimepath:append("~/Developer/personal/plugins/tinytask.nvim")
+-- require("tinytask").setup({ keymap = "<leader>tt" })
 
 -- Pluginbindings
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
@@ -88,8 +88,8 @@ vim.keymap.set({ "v", "n" }, "<leader>/", ":norm gcc<CR>")
 vim.keymap.set("n", "<leader>q", ":Trouble diagnostics toggle<CR>")
 vim.keymap.set("n", "<ESC>", ":noh<CR>")
 
-vim.keymap.set("v", "<Tab>", ":><CR>gv=gv")
-vim.keymap.set("v", "<S-Tab>", ":<<CR>gv=gv")
+vim.keymap.set("v", "<Tab>", ":'<,'>>'<CR>gv")
+vim.keymap.set("v", "<S-Tab>", ":'<,'><'<CR>gv")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
