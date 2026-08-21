@@ -12,10 +12,6 @@
       "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
       "src": "https://github.com/ellisonleao/gruvbox.nvim"
     },
-    "hello_world_lua": {
-      "rev": "7bd164d78c91ebb18bdab5d1955be048431cf37a",
-      "src": "https://github.com/0xAWF/hello_world_lua"
-    },
     "koda.nvim": {
       "rev": "ac7e746882b31a68bdcd533464a20ca40b712bcb",
       "src": "https://github.com/oskarnurm/koda.nvim"
